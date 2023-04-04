@@ -1,0 +1,13 @@
+{
+    "name": "test extenson",
+    "description": "Read blocks",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": ["activeTab", "scripting"],
+    "content_scripts": [
+        {
+            "matches": ["https://docs.google.com/presentation/d*"],
+            "js": ["contentscript.js"]
+        }
+    ]
+}
