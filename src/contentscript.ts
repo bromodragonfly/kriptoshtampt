@@ -1,5 +1,5 @@
 const container = document.createElement('div')
-//название класса уникальное
+
 container.classList.add('sidebar_for_test')
 // тоже вынести
 container.style.background = 'rgba(3, 3, 3, 0.6)'
@@ -12,7 +12,9 @@ container.style.padding = '5px'
 container.style.zIndex = '9000000000000000000'
 container.style.overflowY = 'scroll'
 container.style.transition = '500ms all'
+
 document.body.insertAdjacentElement('afterbegin', container)
+
 const pages = document.getElementById('pages')
 
 if (pages) {
@@ -20,24 +22,27 @@ if (pages) {
         const target = e.target
 
         if (target instanceof SVGImageElement) {
-            return toggle('N/A', 'Image')
+            return toggle('N/A', 'Картинка')
         }
+
         if (target instanceof SVGPathElement) {
             const container = target.closest('g[direction="ltr"]')
+
             if (container !== null) {
                 const textNodes = Array.from(
                     container.querySelectorAll('g text')
                 )
                 const text = textNodes.map((item) => item.textContent).join(' ')
-                return toggle(text, 'Text')
+                return toggle(text, 'Текст')
             }
         }
+
         return toggle('UNKNOWN', getNode(target))
     })
 }
 
-// any :(
-const getNode = (node: any) => {
+//@ts-ignore
+function getNode(node) {
     return node.__proto__
 }
 
